@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pastelería Delicia</title>
+
+  <!-- CSS de Bootstrap 6 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
+        crossorigin="anonymous">
+
+  <!-- Tus estilos, SIEMPRE después de Bootstrap -->
+  <link href="css/estilos.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Menú superior -->
+  <nav class="navbar md:navbar-expand">
+    <div class="container">
+      <a class="navbar-brand" href="#">Delicia</a>
+
+      <button class="btn btn-outline theme-primary" data-bs-toggle="drawer"
+              data-bs-target="#carrito">
+        Carrito <span class="badge theme-primary" id="contador">0</span>
+      </button>
+
+      <button class="btn-icon navbar-toggler" data-bs-toggle="drawer"
+              data-bs-target="#menu" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <dialog class="drawer drawer-end" id="menu">
+        <div class="drawer-header">
+          <button class="btn-close" data-bs-dismiss="drawer" aria-label="Cerrar"></button>
+        </div>
+        <div class="drawer-body">
+          <ul class="nav navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+            <li class="nav-item"><a class="nav-link" href="#pedido">Pedido especial</a></li>
+          </ul>
+        </div>
+      </dialog>
+    </div>
+  </nav>
+
+  <!-- Carrito -->
+  <dialog class="drawer drawer-end" id="carrito">
+    <div class="drawer-header">
+      <h5 class="drawer-title">Tu carrito</h5>
+      <button class="btn-close" data-bs-dismiss="drawer" aria-label="Cerrar"></button>
+    </div>
+    <div class="drawer-body">
+      <ul class="list-group" id="lista-carrito">
+        <li class="list-group-item">Tu carrito está vacío</li>
+      </ul>
+
+      <p class="mt-7"><strong>Subtotal: <span id="subtotal">S/ 0.00</span></strong></p>
+      <p><strong>Total a pagar: <span id="total">S/ 0.00</span></strong></p>
+
+      <button class="btn btn-solid theme-primary" id="btn-vaciar">Vaciar carrito</button>
+    </div>
+  </dialog>
+
+  <main class="container py-9">
+
+    <!-- Catálogo -->
+    <section id="catalogo">
+      <h2 class="mb-7">Nuestro catálogo</h2>
+
+      <ul class="nav nav-pills mb-7" id="filtros">
+        <li class="nav-item"><a class="nav-link active" href="#catalogo" data-categoria="Todos">Todos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#catalogo" data-categoria="Tortas">Tortas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#catalogo" data-categoria="Panes">Panes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#catalogo" data-categoria="Dulces">Dulces</a></li>
+        <li class="nav-item"><a class="nav-link" href="#catalogo" data-categoria="Salados">Salados</a></li>
+      </ul>
+
+      <div class="row row-cols-1 md:row-cols-2 lg:row-cols-3 g-7" id="productos"></div>
+    </section>
+
+    <!-- Pedido especial -->
+    <section id="pedido" class="mt-9">
+      <h2 class="mb-7">Pedido especial</h2>
+
+      <form id="form-pedido">
+        <div class="mb-5">
+          <label for="nombre" class="form-label">Tu nombre</label>
+          <input type="text" class="form-control" id="nombre" required>
+        </div>
+
+        <div class="mb-5">
+          <label for="sabor" class="form-label">Sabor de la torta</label>
+          <input type="text" class="form-control" id="sabor"
+                 placeholder="Ej: chocolate, vainilla, fresa" required>
+        </div>
+
+        <div class="mb-5">
+          <label for="detalles" class="form-label">Detalles (dedicatoria, tamaño, fecha)</label>
+          <textarea class="form-control" id="detalles" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-solid theme-primary">Enviar pedido</button>
+      </form>
+
+      <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div class="toast theme-success" id="toast-pedido" role="alert"
+             aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Pastelería Delicia</strong>
+            <small class="fg-2">ahora</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"
+                    aria-label="Cerrar"></button>
+          </div>
+          <div class="toast-body">¡Gracias! Recibimos tu pedido especial.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- JS de Bootstrap 6: es un módulo, type="module" es obligatorio -->
+  <script type="module"
+          src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
+          crossorigin="anonymous"></script>
+
+  <!-- Tu JavaScript -->
+  <script type="module" src="js/tienda.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+:root {
+  /* "primary" ahora es el color frambuesa de la marca */
+  --bs-primary-base: #b8325a;
+  --bs-primary-bg: #b8325a;
+  --bs-primary-fg: #8f2145;
+  --bs-primary-bg-subtle: #fbe3e8;
+  --bs-primary-contrast: #ffffff;
+}
+
+/* La etiqueta de categoría ocupa solo su ancho */
+.card .badge {
+  align-self: flex-start;
+}
